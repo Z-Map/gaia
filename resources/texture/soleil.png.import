@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/lune.png-dd9a1166c027e60d9b358ed13947526a.stex"
+path="res://.import/soleil.png-2187e5c191f00991db1a77e4b5ef07d2.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://lune.png"
-dest_files=[ "res://.import/lune.png-dd9a1166c027e60d9b358ed13947526a.stex" ]
+source_file="res://resources/texture/soleil.png"
+dest_files=[ "res://.import/soleil.png-2187e5c191f00991db1a77e4b5ef07d2.stex" ]
 
 [params]
 

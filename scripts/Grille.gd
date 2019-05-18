@@ -26,14 +26,14 @@ func refresh_grid():
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	
-	var HUD_resource = preload("HUD.tscn")
+	var HUD_resource = preload("res://HUD.tscn")
 	var HUD = HUD_resource.instance()
 	add_child(HUD)
 	HUD.grille = self
 	
 	for i in range(5):
 		for j in range(9):
-			var carreau_resource = preload("Carreau.tscn")
+			var carreau_resource = preload("res://Carreau.tscn")
 			var carreau = carreau_resource.instance()
 			carreau.position = Vector2(j*100+100, i*100+100) # use set_translation() if you are in 3D
 			if j<2: 

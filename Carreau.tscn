@@ -1,8 +1,12 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://Carreau.gd" type="Script" id=1]
-[ext_resource path="res://soleil.png" type="Texture" id=2]
-[ext_resource path="res://lune.png" type="Texture" id=3]
+[ext_resource path="res://scripts/Carreau.gd" type="Script" id=1]
+[ext_resource path="res://resources/texture/soleil.png" type="Texture" id=2]
+[ext_resource path="res://resources/texture/lune.png" type="Texture" id=3]
+
+
+
+
 
 [node name="Carreau" type="Node2D"]
 script = ExtResource( 1 )
