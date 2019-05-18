@@ -8,4 +8,13 @@
 script = ExtResource( 2 )
 
 [node name="lvl1" parent="." index="0"]
+editor/display_folded = true
 script = ExtResource( 3 )
+
+[node name="lvl2" parent="." index="1"]
+editor/display_folded = true
+script = ExtResource( 3 )
+
+[node name="growth" type="Timer" parent="." index="2"]
+wait_time = 15.0
+one_shot = true

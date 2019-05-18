@@ -1,12 +1,18 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://resources/space.tres" type="Environment" id=1]
 [ext_resource path="res://resources/mesh/spacebase_frame.obj" type="ArrayMesh" id=2]
+[ext_resource path="res://element/plant_tile.tscn" type="PackedScene" id=3]
 
 [node name="Root" type="Spatial"]
 
-[node name="MainCam" type="ClippedCamera" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 7.72075, 13.3305 )
+[node name="CamMgr" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.10175, 12.7659 )
+
+[node name="MainCam" type="ClippedCamera" parent="CamMgr"]
+transform = Transform( 1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 0, 0 )
+environment = ExtResource( 1 )
+current = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource( 1 )
@@ -17,3 +23,9 @@ cast_shadow = 0
 mesh = ExtResource( 2 )
 material/0 = null
 material/1 = null
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 17.9038, 0 )
+
+[node name="Plant_Tile" parent="DirectionalLight" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 7.81942e-07, -17.8887 )

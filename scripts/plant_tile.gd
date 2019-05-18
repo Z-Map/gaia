@@ -7,8 +7,9 @@ func refresh_shape():
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	$lvl2.growth = 0
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _process(delta):
+	$lvl1.growth = 1.0 - ($growth.time_left / 15.0)
+	
