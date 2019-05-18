@@ -8,6 +8,7 @@ func change_growth(v):
 	elif v > 1.0:
 		v = 1.0
 	growth = v
+	print(v)
 	for ch in get_children():
 		ch.scale = Vector3(v, v, v)
 
