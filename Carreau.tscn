@@ -11,7 +11,10 @@ margin_top = 3.01469
 margin_right = 100.0
 margin_bottom = 103.015
 
-[node name="Button" type="Button" parent="Panel"]
+[node name="Button" type="Button" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 3.05176e-005
+margin_top = 3.01469
 margin_right = 100.0
-margin_bottom = 100.0
-[connection signal="pressed" from="Panel/Button" to="." method="_on_Button_pressed"]
+margin_bottom = 103.015
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
