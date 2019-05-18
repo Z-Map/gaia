@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Carreau.gd" type="Script" id=1]
+[ext_resource path="res://soleil.png" type="Texture" id=2]
+[ext_resource path="res://lune.png" type="Texture" id=3]
 
 [node name="Carreau" type="Node2D"]
 script = ExtResource( 1 )
@@ -17,4 +19,33 @@ margin_left = 3.05176e-005
 margin_top = 3.01469
 margin_right = 100.0
 margin_bottom = 103.015
+
+[node name="soleil" type="Sprite" parent="."]
+position = Vector2( 47.1288, 55.468 )
+scale = Vector2( 0.727925, 0.727925 )
+texture = ExtResource( 2 )
+
+[node name="lune" type="Sprite" parent="."]
+position = Vector2( 50.5824, 53.4884 )
+texture = ExtResource( 3 )
+
+[node name="PlantDeath" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
+
+[node name="MushDeath" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="PlantBirth" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
+
+[node name="MushBirth" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
+[connection signal="timeout" from="PlantDeath" to="." method="_on_PlantDeath_timeout"]
+[connection signal="timeout" from="MushDeath" to="." method="_on_MushDeath_timeout"]
+[connection signal="timeout" from="PlantBirth" to="." method="_on_PlantBirth_timeout"]
+[connection signal="timeout" from="MushBirth" to="." method="_on_MushBirth_timeout"]
