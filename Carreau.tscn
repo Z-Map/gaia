@@ -8,14 +8,14 @@
 script = ExtResource( 1 )
 
 [node name="Panel" type="Panel" parent="."]
-margin_left = 3.05176e-05
+margin_left = 3.05176e-005
 margin_top = 3.01469
 margin_right = 100.0
 margin_bottom = 103.015
 
 [node name="Button" type="Button" parent="."]
 modulate = Color( 1, 1, 1, 0 )
-margin_left = 3.05176e-05
+margin_left = 3.05176e-005
 margin_top = 3.01469
 margin_right = 100.0
 margin_bottom = 103.015
@@ -44,8 +44,12 @@ one_shot = true
 [node name="MushBirth" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
+
+[node name="WatchTime" type="Timer" parent="."]
+wait_time = 4.1
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
 [connection signal="timeout" from="PlantDeath" to="." method="_on_PlantDeath_timeout"]
 [connection signal="timeout" from="MushDeath" to="." method="_on_MushDeath_timeout"]
 [connection signal="timeout" from="PlantBirth" to="." method="_on_PlantBirth_timeout"]
 [connection signal="timeout" from="MushBirth" to="." method="_on_MushBirth_timeout"]
+[connection signal="timeout" from="WatchTime" to="." method="_on_WatchTime_timeout"]
