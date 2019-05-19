@@ -12,10 +12,12 @@
 
 [node name="Root" type="Spatial"]
 
-[node name="CamMgr" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.958358, 0.285568, 0, -0.285568, 0.958358, 0, 24.178, 34.5396 )
+[node name="CamPoint" type="Spatial" parent="."]
 
-[node name="MainCam" type="ClippedCamera" parent="CamMgr"]
+[node name="CamMgr" type="Spatial" parent="CamPoint"]
+transform = Transform( 1, 0, 0, 0, 0.958358, 0.285568, 0, -0.285568, 0.958358, 0, 18.4121, 30.1245 )
+
+[node name="MainCam" type="ClippedCamera" parent="CamPoint/CamMgr"]
 transform = Transform( 1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 0, 0 )
 environment = ExtResource( 1 )
 current = true
@@ -44,9 +46,9 @@ spot_angle_attenuation = 3.03143
 [node name="DarkLight" type="SpotLight" parent="spacebase"]
 transform = Transform( 0.1, 0, 0, 0, -4.37114e-09, 0.1, 0, -0.1, -4.37114e-09, 0, 3.32991, 0 )
 layers = 4
-light_color = Color( 0.619608, 0.576471, 1, 1 )
-light_energy = 0.5
-light_cull_mask = 4293918725
+light_color = Color( 0.854902, 0.839216, 1, 1 )
+light_energy = 0.2
+light_cull_mask = 4293918724
 spot_range = 50.0
 spot_attenuation = 0.233258
 spot_angle = 60.0
@@ -67,8 +69,7 @@ mesh = ExtResource( 5 )
 material/0 = ExtResource( 6 )
 
 [node name="spacebase_garden" type="MeshInstance" parent="spacebase"]
-transform = Transform( 1.1, 0, 0, 0, 1, 0, 0, 0, 1.1, 0, -0.114289, 0 )
-layers = 0
+transform = Transform( 1.05, 0, 0, 0, 1, 0, 0, 0, 1.05, 0, -0.339786, 0 )
 cast_shadow = 0
 mesh = ExtResource( 7 )
 material/0 = ExtResource( 4 )
@@ -87,6 +88,3 @@ transform = Transform( 0.0582843, 0.0125297, -0.0802867, 0.0115518, 0.0965229, 0
 layers = 524288
 light_energy = 0.2
 light_cull_mask = 4294443008
-
-[node name="Test" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0778131, 7.1143, 0.00644112 )
