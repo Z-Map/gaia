@@ -27,10 +27,10 @@ func change_light(v = false):
 	$Panel1.layers = layer
 	$Panel2.layers = layer
 	$dirt_ground.layers = layer
-	layer = 4 if v else 2
-	$Panel1.layers = layer
-	$Panel2.layers =  layer
-	$dirt_ground.layers = layer
+	#layer = 4 if v else 2
+	#$Panel1.layers = layer
+	#$Panel2.layers =  layer
+	#$dirt_ground.layers = layer
 	print("Set layer " + str(layer) + " on " + str(x) + "," + str(y))
 	light_on = v
 
