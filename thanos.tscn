@@ -36,6 +36,4 @@ spot_angle_attenuation = 3.03143
 [node name="Grid" type="Spatial" parent="."]
 script = ExtResource( 2 )
 
-[node name="Plant_Tile" parent="DirectionalLight" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, -4.37114e-008, -1, 0, 1, -4.37114e-008, -0.00828713, 0.00540502, -17.8887 )
->>>>>>> Stashed changes
+[node name="UI" type="Node2D" parent="Grid"]
