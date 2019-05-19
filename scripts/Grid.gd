@@ -69,6 +69,5 @@ func _ready():
 	init_HUD()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	if Input.is_key_pressed(KEY_ESCAPE):
-		get_tree().quit()
+#func _process(delta):
+#	pass

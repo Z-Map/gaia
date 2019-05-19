@@ -4,12 +4,29 @@ extends Node2D
 # var a = 2
 # var b = "text"
 
-var lumiere = false
+var lumiere = false setget set_state
 var HUD = null
 var grid = null
 var x = 0
 var y = 0
 var boops = []
+var pressed = false
+var hover = false
+
+func update_sprite():
+	if lumiere:
+		$soleil.show()
+		$lune.hide()
+	else:
+		$soleil.hide()
+		$lune.show()
+
+func set_state(v):
+	if v != lumiere:
+		lumiere = not lumiere
+		boops[rand_range(0,4)].play()
+		update_sprite()
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -18,18 +35,21 @@ func _ready():
 	boops.append($Bip2)
 	boops.append($Bip3)
 	boops.append($Bip4)
+	update_sprite()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	if lumiere:
-		$soleil.show()
-		$lune.hide()
-	else:
-		$soleil.hide()
-		$lune.show()
+#func _process(delta):
+#	pass
 
+func press_btn():
+	HUD.set_light(x, y, not lumiere)
+	pressed = true
 
-func _on_Button_pressed():
-	lumiere = not lumiere
-	boops[rand_range(0,4)].play()
-	HUD.call_func_grid(x,y, lumiere)
+func _on_Area2D_mouse_entered():
+	HUD.focus_tile = self
+	hover = true
+	if HUD.light_toggling and not pressed:
+		press_btn()
+
+func _on_Area2D_mouse_exited():
+	hover = false
