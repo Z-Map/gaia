@@ -2,6 +2,7 @@ extends Spatial
 
 # Tableau d'objets pour la grille
 var cells_grid = null
+var light_inited = false
 var light_grid = null
 
 # Cell type count
@@ -23,21 +24,33 @@ var water_output: int = 0
 
 var HUD
 
-func update_light_grid(x=0, y=0,etat = false):
-	light_grid[x][y] = etat
+func update_light_grid(x = 0, y = 0, etat = false):
+	if light_inited:
+		light_grid[x][y].light_on = etat
 
 func init_grids(lg_size = 9, cg_size = 3):
 	light_grid = []
 	for i in range(lg_size):
 		light_grid.append([])
 		for j in range(lg_size):
-			light_grid[i].append(false)
+			light_grid[i].append(null)
 	cells_grid = []
 	for i in range(lg_size * cg_size):
 		cells_grid.append([])
 		for j in range(lg_size * cg_size):
 			cells_grid[i].append(null)
 	print("Grid inited with size " + str(lg_size) + " and sub size " + str(cg_size))
+
+func init_blocs():
+	var light_bloc = preload("res://element/Garden_Bloc.tscn")
+	for i in range(len(light_grid)):
+		for j in range(len(light_grid[i])):
+			light_grid[i][j] = light_bloc.instance()
+			light_grid[i][j].grid = self
+			light_grid[i][j].set_pos(i, j)
+			light_grid[i][j].translation = Vector3(-24 + float(j * 6), 0, -24 + float(i * 6))
+			add_child(light_grid[i][j])
+	light_inited = true
 
 func init_HUD():
 	var HUD_resource = preload("res://HUD.tscn")
@@ -48,6 +61,7 @@ func init_HUD():
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	init_grids()
+	init_blocs()
 	init_HUD()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

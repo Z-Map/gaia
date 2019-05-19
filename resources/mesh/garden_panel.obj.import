@@ -1,0 +1,18 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/garden_panel.obj-8bf1a96e375e7526a4b11575ec5a380d.mesh"
+
+[deps]
+
+files=[ "res://.import/garden_panel.obj-8bf1a96e375e7526a4b11575ec5a380d.mesh" ]
+
+source_file="res://resources/mesh/garden_panel.obj"
+dest_files=[ "res://.import/garden_panel.obj-8bf1a96e375e7526a4b11575ec5a380d.mesh", "res://.import/garden_panel.obj-8bf1a96e375e7526a4b11575ec5a380d.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+optimize_mesh=true
