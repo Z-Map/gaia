@@ -1,8 +1,13 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scripts/light_tile.gd" type="Script" id=1]
 [ext_resource path="res://resources/texture/Ampoule_on.png" type="Texture" id=2]
 [ext_resource path="res://resources/texture/Ampoule_off.png" type="Texture" id=3]
+[ext_resource path="res://resources/sounds/Bip1.wav" type="AudioStream" id=4]
+[ext_resource path="res://resources/sounds/Bip2.wav" type="AudioStream" id=5]
+[ext_resource path="res://resources/sounds/Bip3.wav" type="AudioStream" id=6]
+[ext_resource path="res://resources/sounds/Bip4.wav" type="AudioStream" id=7]
+[ext_resource path="res://resources/sounds/Bip5.wav" type="AudioStream" id=8]
 
 [node name="light_tile" type="Node2D"]
 script = ExtResource( 1 )
@@ -22,4 +27,19 @@ modulate = Color( 1, 1, 1, 0 )
 margin_left = 0.149891
 margin_right = 25.1499
 margin_bottom = 25.0
+
+[node name="Bip0" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+
+[node name="Bip1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+
+[node name="Bip2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+
+[node name="Bip3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+
+[node name="Bip4" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
