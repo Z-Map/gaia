@@ -3,6 +3,11 @@ extends Spatial
 var lvl = 0
 var pos_x = 0
 var pos_y = 0
+var light = false setget set_light
+
+func set_light(v = false):
+	$lvl1.change_layer(v)
+	$lvl2.change_layer(v)
 
 func refresh_shape():
 	pass

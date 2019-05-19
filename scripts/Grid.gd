@@ -68,6 +68,7 @@ func add_plant(x, y):
 	if not cells_grid[x][y]:
 		cells_grid[x][y] = Plant_tile.instance()
 		cells_grid[x][y].set_pos(x, y)
+		cells_grid[x][y].light = light_grid[x / 3][y / 3].light_on
 		add_child(cells_grid[x][y])
 		return true
 	else:
