@@ -7,6 +7,7 @@ var close_panneau = false
 var open_panneau = true
 
 var light_toggling = false
+var light_toggle_mode = null
 var tiles = []
 var focus_tile = null
 
@@ -29,10 +30,12 @@ func _ready():
 			$Panneau/Pad.add_child(light_tile)
 
 func set_light(x, y, state = false):
+	light_toggle_mode = not state
 	call_func_grid(x,y, state)
 	tiles[x][y].lumiere = state
 
 func reset_button_press():
+	light_toggle_mode = null
 	for tab in tiles:
 		for subtab in tab:
 			subtab.pressed = false
