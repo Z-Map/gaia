@@ -14,5 +14,5 @@ func _ready():
 
 
 func _on_Button_pressed():
-	get_tree().change_scene("Grille.tscn")
+	get_tree().change_scene("Thanos.tscn")
 	pass # Replace with function body.
