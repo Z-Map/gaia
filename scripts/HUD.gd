@@ -19,10 +19,7 @@ func _ready():
 			light_tile.position = Vector2(j*25, i*25) # use set_translation() if you are in 3D
 			light_tile.x = i
 			light_tile.y = j
-			if j<2: 
-				light_tile.lumiere = true
-			else:
-				light_tile.lumiere = false
+			light_tile.lumiere = false
 			$Panneau/Pad.add_child(light_tile)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
