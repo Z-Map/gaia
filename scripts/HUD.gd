@@ -1,9 +1,7 @@
 extends Control
 
 # Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-var grille = null
+var grid = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -27,5 +25,5 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	$Air.text = "Plantes : "+str(grille.green)
-	$Energie.text = "Champis : "+str(grille.yellow)
+	$Air.text = "Air : " + str(grid.oxygen)
+	$Energie.text = "Energie : "+str(grid.power)
