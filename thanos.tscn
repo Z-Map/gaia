@@ -1,15 +1,16 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://scripts/CamPoint.gd" type="Script" id=1]
 [ext_resource path="res://resources/space.tres" type="Environment" id=2]
 [ext_resource path="res://scripts/Grid.gd" type="Script" id=3]
-[ext_resource path="res://resources/mesh/spacebase_frame.obj" type="ArrayMesh" id=4]
-[ext_resource path="res://resources/mesh/metal.material" type="Material" id=5]
-[ext_resource path="res://resources/mesh/spacebase_glass_ext.obj" type="ArrayMesh" id=6]
-[ext_resource path="res://resources/mesh/glass.material" type="Material" id=7]
-[ext_resource path="res://resources/mesh/spacebase_garden.obj" type="ArrayMesh" id=8]
-[ext_resource path="res://resources/mesh/dirt.material" type="Material" id=9]
-[ext_resource path="res://resources/mesh/panel.material" type="Material" id=10]
+[ext_resource path="res://resources/sounds/musiqueV2.wav" type="AudioStream" id=4]
+[ext_resource path="res://resources/mesh/spacebase_frame.obj" type="ArrayMesh" id=5]
+[ext_resource path="res://resources/mesh/metal.material" type="Material" id=6]
+[ext_resource path="res://resources/mesh/spacebase_glass_ext.obj" type="ArrayMesh" id=7]
+[ext_resource path="res://resources/mesh/glass.material" type="Material" id=8]
+[ext_resource path="res://resources/mesh/spacebase_garden.obj" type="ArrayMesh" id=9]
+[ext_resource path="res://resources/mesh/dirt.material" type="Material" id=10]
+[ext_resource path="res://resources/mesh/panel.material" type="Material" id=11]
 
 [node name="Root" type="Spatial"]
 
@@ -30,13 +31,16 @@ environment = ExtResource( 2 )
 [node name="Grid" type="Spatial" parent="."]
 script = ExtResource( 3 )
 
+[node name="Music" type="AudioStreamPlayer" parent="Grid"]
+stream = ExtResource( 4 )
+
 [node name="UI" type="Node2D" parent="Grid"]
 
 [node name="spacebase" type="Spatial" parent="."]
 transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0 )
 
 [node name="SpotLight" type="SpotLight" parent="spacebase"]
-transform = Transform( 0.1, 0, 0, 0, -4.37114e-09, 0.1, 0, -0.1, -4.37114e-09, 0, 3.32991, 0 )
+transform = Transform( 0.1, 0, 0, 0, -4.37114e-009, 0.1, 0, -0.1, -4.37114e-009, 0, 3.32991, 0 )
 layers = 2
 light_energy = 5.0
 light_cull_mask = 4293918722
@@ -46,7 +50,7 @@ spot_angle = 60.0
 spot_angle_attenuation = 3.03143
 
 [node name="DarkLight" type="SpotLight" parent="spacebase"]
-transform = Transform( 0.1, 0, 0, 0, -4.37114e-09, 0.1, 0, -0.1, -4.37114e-09, 0, 3.32991, 0 )
+transform = Transform( 0.1, 0, 0, 0, -4.37114e-009, 0.1, 0, -0.1, -4.37114e-009, 0, 3.32991, 0 )
 layers = 4
 light_color = Color( 0.854902, 0.839216, 1, 1 )
 light_energy = 0.2
@@ -59,27 +63,27 @@ spot_angle_attenuation = 3.03143
 [node name="spacebase_frame" type="MeshInstance" parent="spacebase"]
 layers = 524289
 cast_shadow = 0
-mesh = ExtResource( 4 )
-material/0 = ExtResource( 5 )
-material/1 = ExtResource( 5 )
-material/2 = ExtResource( 5 )
+mesh = ExtResource( 5 )
+material/0 = ExtResource( 6 )
+material/1 = ExtResource( 6 )
+material/2 = ExtResource( 6 )
 
 [node name="spacebase_glass_ext" type="MeshInstance" parent="spacebase"]
 layers = 524289
 cast_shadow = 0
-mesh = ExtResource( 6 )
-material/0 = ExtResource( 7 )
+mesh = ExtResource( 7 )
+material/0 = ExtResource( 8 )
 
 [node name="spacebase_garden" type="MeshInstance" parent="spacebase"]
 transform = Transform( 1.05, 0, 0, 0, 1, 0, 0, 0, 1.05, 0, -0.339786, 0 )
 cast_shadow = 0
-mesh = ExtResource( 8 )
-material/0 = ExtResource( 5 )
-material/1 = ExtResource( 9 )
-material/2 = ExtResource( 10 )
+mesh = ExtResource( 9 )
+material/0 = ExtResource( 6 )
+material/1 = ExtResource( 10 )
+material/2 = ExtResource( 11 )
 
 [node name="ambient" type="DirectionalLight" parent="spacebase"]
-transform = Transform( 0.1, 0, 0, 0, -4.37114e-09, -0.1, 0, 0.1, -4.37114e-09, 0, 3.26539, 0 )
+transform = Transform( 0.1, 0, 0, 0, -4.37114e-009, -0.1, 0, 0.1, -4.37114e-009, 0, 3.26539, 0 )
 layers = 3
 light_color = Color( 0.427451, 0.423529, 1, 1 )
 light_energy = 0.1

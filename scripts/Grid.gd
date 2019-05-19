@@ -58,8 +58,12 @@ func init_HUD():
 	HUD.grid = self
 	$UI.add_child(HUD)
 
+func init_music():
+	$Music.play()
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	init_music()
 	init_grids()
 	init_blocs()
 	init_HUD()

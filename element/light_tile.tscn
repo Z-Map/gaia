@@ -30,16 +30,21 @@ margin_bottom = 25.0
 
 [node name="Bip0" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
+volume_db = -20.0
 
 [node name="Bip1" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
+volume_db = -20.0
 
 [node name="Bip2" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
+volume_db = -20.0
 
 [node name="Bip3" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )
+volume_db = -20.0
 
 [node name="Bip4" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
+volume_db = -20.0
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
