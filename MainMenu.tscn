@@ -44,8 +44,8 @@ align = 1
 
 [node name="Button" type="Button" parent="VBoxContainer/VBoxContainer/Demarrer"]
 modulate = Color( 1, 1, 1, 0 )
-margin_left = 284.0
-margin_top = 5.0
-margin_right = 741.0
-margin_bottom = 134.0
+margin_left = 409.264
+margin_top = 8.34033
+margin_right = 866.264
+margin_bottom = 137.34
 [connection signal="pressed" from="VBoxContainer/VBoxContainer/Demarrer/Button" to="." method="_on_Button_pressed"]

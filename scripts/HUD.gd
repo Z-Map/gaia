@@ -10,7 +10,7 @@ func _ready():
 			var light_resource = preload("res://element/light_tile.tscn")
 			var light_tile = light_resource.instance()
 			light_tile.HUD = self
-			light_tile.position = Vector2(j*25+1000, i*25+400) # use set_translation() if you are in 3D
+			light_tile.position = Vector2(j*25+1025, i*25+475) # use set_translation() if you are in 3D
 			if j<2: 
 				light_tile.lumiere = true
 			else:
