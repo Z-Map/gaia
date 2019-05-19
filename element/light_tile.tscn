@@ -1,24 +1,25 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scripts/light_tile.gd" type="Script" id=1]
-[ext_resource path="res://resources/texture/soleil.png" type="Texture" id=2]
-[ext_resource path="res://resources/texture/lune.png" type="Texture" id=3]
+[ext_resource path="res://resources/texture/Ampoule_on.png" type="Texture" id=2]
+[ext_resource path="res://resources/texture/Ampoule_off.png" type="Texture" id=3]
 
 [node name="light_tile" type="Node2D"]
 script = ExtResource( 1 )
 
 [node name="soleil" type="Sprite" parent="."]
-position = Vector2( 12.6136, 12.1503 )
-scale = Vector2( 0.189595, 0.189595 )
+position = Vector2( 12, 12 )
+scale = Vector2( 0.2, 0.2 )
 texture = ExtResource( 2 )
 
 [node name="lune" type="Sprite" parent="."]
-position = Vector2( 13.5191, 11.7922 )
-scale = Vector2( 0.277266, 0.277266 )
+position = Vector2( 12, 12 )
+scale = Vector2( 0.2, 0.2 )
 texture = ExtResource( 3 )
 
 [node name="Button" type="Button" parent="."]
 modulate = Color( 1, 1, 1, 0 )
-margin_right = 25.0
+margin_left = 0.149891
+margin_right = 25.1499
 margin_bottom = 25.0
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
