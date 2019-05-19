@@ -32,7 +32,7 @@ func _ready():
 	add_child(HUD)
 	HUD.grille = self
 	
-	for i in range(9):
+	"""for i in range(9):
 		for j in range(9):
 			var carreau_resource = preload("res://Carreau.tscn")
 			var carreau = carreau_resource.instance()
@@ -54,7 +54,7 @@ func _ready():
 					else:
 						carreau.lumiere = false
 			add_child(carreau) # parent could be whatever node in the scene that you want the car to be child of
-	refresh_grid()
+	refresh_grid()"""
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
