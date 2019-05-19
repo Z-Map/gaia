@@ -31,7 +31,7 @@ func change_light(v = false):
 	#$Panel1.layers = layer
 	#$Panel2.layers =  layer
 	#$dirt_ground.layers = layer
-	print("Set layer " + str(layer) + " on " + str(x) + "," + str(y))
+	#print("Set layer " + str(layer) + " on " + str(x) + "," + str(y))
 	light_on = v
 
 func _ready():
