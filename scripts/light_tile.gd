@@ -14,12 +14,16 @@ var pressed = false
 var hover = false
 
 func update_sprite():
-	if lumiere:
-		$soleil.show()
-		$lune.hide()
+	if not x == 4 or not y == 4:
+		if lumiere:
+			$soleil.show()
+			$lune.hide()
+		else:
+			$soleil.hide()
+			$lune.show()
 	else:
 		$soleil.hide()
-		$lune.show()
+		$lune.hide()
 
 func set_state(v):
 	if v != lumiere:
@@ -46,11 +50,12 @@ func press_btn():
 	pressed = true
 
 func _on_Area2D_mouse_entered():
-	HUD.focus_tile = self
-	hover = true
-	if HUD.light_toggle_mode == null or HUD.light_toggle_mode == lumiere:
-		if HUD.light_toggling and not pressed:
-			press_btn()
+	if not x == 4 or not y == 4:
+		HUD.focus_tile = self
+		hover = true
+		if HUD.light_toggle_mode == null or HUD.light_toggle_mode == lumiere:
+			if HUD.light_toggling and not pressed:
+				press_btn()
 
 func _on_Area2D_mouse_exited():
 	hover = false

@@ -5,6 +5,11 @@ var growth: float = 0.0 setget change_growth
 
 var original_scale = []
 
+func change_layer(v):
+	var layer = 2 if v else 4
+	for ch in get_children():
+		ch.layers = layer
+
 func change_growth(v):
 	if v < 0.0:
 		v = 0.0
