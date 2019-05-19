@@ -15,21 +15,21 @@ margin_bottom = -2.65002
 script = ExtResource( 1 )
 
 [node name="Air" type="Label" parent="."]
-margin_left = 968.587
-margin_top = 241.076
-margin_right = 1232.59
-margin_bottom = 301.076
+margin_left = 1005.91
+margin_top = 6.63951
+margin_right = 1269.91
+margin_bottom = 91.6395
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0.0196078, 0.498039, 0.133333, 1 )
-text = "Plantes : 0"
+text = "Air : 0"
 uppercase = true
 
 [node name="Energie" type="Label" parent="."]
-margin_left = 970.162
-margin_top = 296.076
-margin_right = 1234.16
-margin_bottom = 356.076
+margin_left = 888.518
+margin_top = 79.1347
+margin_right = 1262.52
+margin_bottom = 164.135
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 1, 1, 0, 1 )
-text = "Champis : 0"
+text = "Energie : 0"
 uppercase = true

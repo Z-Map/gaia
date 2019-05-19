@@ -25,5 +25,6 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	$Air.text = "Air : " + str(grid.oxygen)
-	$Energie.text = "Energie : "+str(grid.power)
+	if grid:
+		$Air.text = "Air : " + str(grid.oxygen)
+		$Energie.text = "Energie : "+str(grid.power)
