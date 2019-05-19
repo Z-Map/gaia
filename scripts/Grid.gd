@@ -23,6 +23,9 @@ var water_output: int = 0
 
 var HUD
 
+func update_light_grid(x=0, y=0,etat = false):
+	light_grid[x][y] = etat
+
 func init_grids(lg_size = 9, cg_size = 3):
 	light_grid = []
 	for i in range(lg_size):

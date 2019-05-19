@@ -6,6 +6,9 @@ extends Node2D
 
 var lumiere = false
 var HUD = null
+var grid = null
+var x = 0
+var y = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -23,3 +26,4 @@ func _process(delta):
 
 func _on_Button_pressed():
 	lumiere = not lumiere
+	HUD.call_func_grid(x,y, lumiere)

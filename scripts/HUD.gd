@@ -1,7 +1,10 @@
-extends Control
+extends Node2D
 
 # Declare member variables here. Examples:
 var grid = null
+
+func call_func_grid(x=0,y=0,etat=false):
+	grid.update_light_grid(x,y,etat)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -10,17 +13,13 @@ func _ready():
 			var light_resource = preload("res://element/light_tile.tscn")
 			var light_tile = light_resource.instance()
 			light_tile.HUD = self
-			light_tile.position = Vector2(j*25+1025, i*25+475) # use set_translation() if you are in 3D
+			light_tile.position = Vector2(j*25+1025, i*25+450) # use set_translation() if you are in 3D
+			light_tile.x = i
+			light_tile.y = j
 			if j<2: 
 				light_tile.lumiere = true
 			else:
-				if j>6: 
-					light_tile.lumiere = false
-				else:
-					if j <4:
-						light_tile.lumiere = true
-					else:
-						light_tile.lumiere = false
+				light_tile.lumiere = false
 			add_child(light_tile)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
