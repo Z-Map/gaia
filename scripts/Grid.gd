@@ -36,11 +36,11 @@ func init_grids(lg_size = 9, cg_size = 3):
 			cells_grid.append(null)
 	print("Grid inited with size " + str(lg_size) + " and sub size " + str(cg_size))
 
-func init_HUD(hud_scene = "res://HUD.tscn"):
-	HUD_resource = preload(hud_scene)
+func init_HUD():
+	var HUD_resource = preload("res://HUD.tscn")
 	HUD = HUD_resource.instance()
 	HUD.grid = self
-	
+	$UI.add_child(HUD)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
