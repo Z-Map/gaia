@@ -73,15 +73,38 @@ func add_plant(x, y):
 		return true
 	else:
 		return false
+		
+func add_champi(x, y):
+	if not cells_grid[x][y]:
+		cells_grid[x][y] = Champi_tile.instance()
+		cells_grid[x][y].set_pos(x, y)
+		cells_grid[x][y].light = light_grid[x / 3][y / 3].light_on
+		add_child(cells_grid[x][y])
+		return true
+	else:
+		return false
 
 func start_gardening():
 	for i in range(3,6):
 		for j in range(3,6):
 			HUD.set_light(i, j, true)
+	for i in range(0,2):
+		for j in range(0,2):
+			HUD.set_light(i, j, true)
+	HUD.set_light(2, 1, true)
+	for i in range(7,9):
+		for j in range(6,9):
+			HUD.set_light(i, j, true)
 	for i in range(12,15):
 		for j in range(12,15):
 			if i != 13 or j != 13:
 				add_plant(i,j)
+	for i in range(3,6):
+		for j in range(0,3):
+			add_plant(i,j)
+	for i in range(21,24):
+		for j in range(3,6):
+			add_champi(i,j)
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	init_music()
@@ -92,5 +115,6 @@ func _ready():
 	start_gardening()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
+func _process(delta):
+	power+=0.5
 #	pass

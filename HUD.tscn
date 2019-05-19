@@ -32,7 +32,7 @@ texture = ExtResource( 4 )
 position = Vector2( 180.925, 255.096 )
 texture = ExtResource( 5 )
 
-[node name="TextureProgress" type="TextureProgress" parent="Panneau"]
+[node name="Barre" type="TextureProgress" parent="Panneau"]
 margin_left = 276.946
 margin_top = 39.3415
 margin_right = 376.946

@@ -57,6 +57,8 @@ func _process(delta):
 				$Panneau/Fleche.hide()
 				open_panneau = true
 				move_panneau = false
+				
+	get_node("Panneau/Barre").value = grid.power
 
 func _input(event):
 	if event is InputEventMouseButton and event.button_index == 1:
