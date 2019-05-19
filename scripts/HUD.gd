@@ -64,9 +64,7 @@ func _input(event):
 			light_toggling = true
 			if focus_tile and focus_tile.hover:
 				focus_tile.press_btn()
-			print("toggle")
 		else:
-			print("reset")
 			light_toggling = false
 			reset_button_press()
 			

@@ -22,6 +22,9 @@ var oxygen: int = 0
 # Consomation d'énergie pour l'eau par tour
 var water_output: int = 0
 
+var Plant_tile = preload("res://element/plant_tile.tscn")
+var Champi_tile = preload("res://element/champi_tile.tscn")
+
 var HUD
 
 func update_light_grid(x = 0, y = 0, etat = false):
@@ -61,12 +64,31 @@ func init_HUD():
 func init_music():
 	$Music.play()
 
+func add_plant(x, y):
+	if not cells_grid[x][y]:
+		cells_grid[x][y] = Plant_tile.instance()
+		cells_grid[x][y].set_pos(x, y)
+		add_child(cells_grid[x][y])
+		return true
+	else:
+		return false
+
+func start_gardening():
+	for i in range(3,6):
+		for j in range(3,6):
+			HUD.set_light(i, j, true)
+	for i in range(12,15):
+		for j in range(12,15):
+			if i != 13 or j != 13:
+				add_plant(i,j)
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	init_music()
 	init_grids()
 	init_blocs()
 	init_HUD()
+	
+	start_gardening()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

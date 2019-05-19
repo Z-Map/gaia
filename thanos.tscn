@@ -36,6 +36,8 @@ stream = ExtResource( 4 )
 
 [node name="UI" type="Node2D" parent="Grid"]
 
+[node name="Tour" type="Timer" parent="Grid"]
+
 [node name="spacebase" type="Spatial" parent="."]
 transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0 )
 

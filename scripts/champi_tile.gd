@@ -1,6 +1,13 @@
 extends Spatial
 
 var lvl = 0
+var pos_x = 0
+var pos_y = 0
+
+func set_pos(x, y):
+	pos_x = x
+	pos_y = y
+	translate(Vector3(-26 + x * 2, 0.0, -26 + y * 2))
 
 func refresh_shape():
 	pass
