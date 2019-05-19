@@ -26,6 +26,7 @@ material/0 = null
 material/1 = null
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
+<<<<<<< Updated upstream
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 17.9038, 0 )
 directional_shadow_mode = 0
 
@@ -34,3 +35,9 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00828713, 0.0150986, -0.005
 
 [node name="Champi_Tile" parent="." instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.96789, 0, 0 )
+=======
+transform = Transform( 1, 0, 0, 0, -4.37114e-008, 1, 0, -1, -4.37114e-008, 0, 17.9038, 0 )
+
+[node name="Plant_Tile" parent="DirectionalLight" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, -4.37114e-008, -1, 0, 1, -4.37114e-008, -0.00828713, 0.00540502, -17.8887 )
+>>>>>>> Stashed changes

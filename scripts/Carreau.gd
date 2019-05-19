@@ -36,13 +36,13 @@ func _process(delta):
 func _on_Button_pressed():
 	if lumiere:
 		lumiere = false
-		if grille.grille_etats[x][y] == 0  and (grille.grille_etats[min(x+1,4)][y] == 2 or grille.grille_etats[x][min(y+1,8)] == 2 or grille.grille_etats[max(x-1,0)][y] == 2 or grille.grille_etats[x][max(y-1,0)] == 2):
+		if grille.grille_etats[x][y] == 0  and (grille.grille_etats[min(x+1,8)][y] == 2 or grille.grille_etats[x][min(y+1,8)] == 2 or grille.grille_etats[max(x-1,0)][y] == 2 or grille.grille_etats[x][max(y-1,0)] == 2):
 			$MushBirth.start()
 		else: if grille.grille_etats[x][y] == 1:
 			$PlantDeath.start()
 	else: 
 		lumiere = true
-		if grille.grille_etats[x][y] == 0  and (grille.grille_etats[min(x+1,4)][y] == 1 or grille.grille_etats[x][min(y+1,8)] == 1 or grille.grille_etats[max(x-1,0)][y] == 1 or grille.grille_etats[x][max(y-1,0)] == 1):
+		if grille.grille_etats[x][y] == 0  and (grille.grille_etats[min(x+1,8)][y] == 1 or grille.grille_etats[x][min(y+1,8)] == 1 or grille.grille_etats[max(x-1,0)][y] == 1 or grille.grille_etats[x][max(y-1,0)] == 1):
 			$PlantBirth.start()
 		else: if grille.grille_etats[x][y] == 2:
 			$MushDeath.start()
@@ -50,14 +50,14 @@ func _on_Button_pressed():
 
 func _on_PlantDeath_timeout():
 	grille.grille_etats[x][y] = 0
-	if grille.grille_etats[min(x+1,4)][y] == 2 or grille.grille_etats[x][min(y+1,8)] == 2 or grille.grille_etats[max(x-1,0)][y] == 2 or grille.grille_etats[x][max(y-1,0)] == 2:
+	if grille.grille_etats[min(x+1,8)][y] == 2 or grille.grille_etats[x][min(y+1,8)] == 2 or grille.grille_etats[max(x-1,0)][y] == 2 or grille.grille_etats[x][max(y-1,0)] == 2:
 		$MushBirth.start()
 	update_color()
 
 
 func _on_MushDeath_timeout():
 	grille.grille_etats[x][y] = 0
-	if grille.grille_etats[min(x+1,4)][y] == 1 or grille.grille_etats[x][min(y+1,8)] == 1 or grille.grille_etats[max(x-1,0)][y] == 1 or grille.grille_etats[x][max(y-1,0)] == 1:
+	if grille.grille_etats[min(x+1,8)][y] == 1 or grille.grille_etats[x][min(y+1,8)] == 1 or grille.grille_etats[max(x-1,0)][y] == 1 or grille.grille_etats[x][max(y-1,0)] == 1:
 		$PlantBirth.start()
 	update_color()
 
@@ -73,12 +73,12 @@ func _on_MushBirth_timeout():
 
 func _on_WatchTime_timeout():
 	if lumiere:
-		if grille.grille_etats[x][y] == 0  and (grille.grille_etats[min(x+1,4)][y] == 1 or grille.grille_etats[x][min(y+1,8)] == 1 or grille.grille_etats[max(x-1,0)][y] == 1 or grille.grille_etats[x][max(y-1,0)] == 1):
+		if grille.grille_etats[x][y] == 0  and (grille.grille_etats[min(x+1,8)][y] == 1 or grille.grille_etats[x][min(y+1,8)] == 1 or grille.grille_etats[max(x-1,0)][y] == 1 or grille.grille_etats[x][max(y-1,0)] == 1):
 			$PlantBirth.start()
 		else: if grille.grille_etats[x][y] == 2:
 			$MushDeath.start()
 	else: 
-		if grille.grille_etats[x][y] == 0  and (grille.grille_etats[min(x+1,4)][y] == 2 or grille.grille_etats[x][min(y+1,8)] == 2 or grille.grille_etats[max(x-1,0)][y] == 2 or grille.grille_etats[x][max(y-1,0)] == 2):
+		if grille.grille_etats[x][y] == 0  and (grille.grille_etats[min(x+1,8)][y] == 2 or grille.grille_etats[x][min(y+1,8)] == 2 or grille.grille_etats[max(x-1,0)][y] == 2 or grille.grille_etats[x][max(y-1,0)] == 2):
 			$MushBirth.start()
 		else: if grille.grille_etats[x][y] == 1:
 			$PlantDeath.start()
