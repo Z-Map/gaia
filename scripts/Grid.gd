@@ -31,12 +31,12 @@ func init_grids(lg_size = 9, cg_size = 3):
 	for i in range(lg_size):
 		light_grid.append([])
 		for j in range(lg_size):
-			light_grid.append(false)
+			light_grid[i].append(false)
 	cells_grid = []
 	for i in range(lg_size * cg_size):
 		cells_grid.append([])
 		for j in range(lg_size * cg_size):
-			cells_grid.append(null)
+			cells_grid[i].append(null)
 	print("Grid inited with size " + str(lg_size) + " and sub size " + str(cg_size))
 
 func init_HUD():
