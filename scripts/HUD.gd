@@ -83,9 +83,9 @@ func _process(delta):
 				open_panneau_gauche = true
 				move_panneau_gauche = false
 				
-	get_node("Panneau/Barre").value = grid.power
-	get_node("Panneau/Ecran/power_input").text = str(grid.power_input)
-	get_node("Panneau/Gauge/Aiguille").rotation = grid.oxygen*90/100-45
+	get_node("Panneau/Barre").value = 65
+	get_node("Panneau/Ecran/power_input").text = "10.5%"
+	#get_node("Panneau/Gauge/Aiguille").rotation = 30
 
 func _input(event):
 	if event is InputEventMouseButton and event.button_index == 1:

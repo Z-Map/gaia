@@ -34,6 +34,7 @@ texture = ExtResource( 3 )
 
 [node name="Aiguille" type="Sprite" parent="Panneau/Gauge"]
 position = Vector2( 3.85217, 19.1446 )
+rotation = 0.53058
 texture = ExtResource( 4 )
 offset = Vector2( -4, -29 )
 
@@ -42,10 +43,10 @@ position = Vector2( 180.925, 255.096 )
 texture = ExtResource( 5 )
 
 [node name="power_input" type="Label" parent="Panneau/Ecran"]
-margin_left = -50.9359
-margin_top = -11.3413
-margin_right = 53.0641
-margin_bottom = 68.6587
+margin_left = -77.7619
+margin_top = -12.5077
+margin_right = 26.2381
+margin_bottom = 67.4923
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0.607843, 0, 0, 1 )
 text = "100"
