@@ -2,9 +2,14 @@ extends Node2D
 
 # Declare member variables here. Examples:
 var grid = null
+
 var move_panneau = false
+var move_panneau_gauche = false
+
 var close_panneau = false
 var open_panneau = true
+var close_panneau_gauche = false
+var open_panneau_gauche = true
 
 var light_toggling = false
 var light_toggle_mode = null
@@ -60,6 +65,24 @@ func _process(delta):
 				open_panneau = true
 				move_panneau = false
 				
+	if move_panneau_gauche:
+		print(str($Panneau_Gauche.position.x))
+		print(str(open_panneau_gauche))
+		if open_panneau_gauche:
+			if $Panneau_Gauche.position.x < 400:
+				$Panneau_Gauche.position.x += 15
+			else:
+				$Panneau_Gauche/Fleche_Gauche.show()
+				open_panneau_gauche = false
+				move_panneau_gauche = false
+		else:
+			if $Panneau_Gauche.position.x > 65:
+				$Panneau_Gauche.position.x -= 15
+			else:
+				$Panneau_Gauche/Fleche_Gauche.hide()
+				open_panneau_gauche = true
+				move_panneau_gauche = false
+				
 	get_node("Panneau/Barre").value = grid.power
 	get_node("Panneau/Ecran/power_input").text = str(grid.power_input)
 	get_node("Panneau/Gauge/Aiguille").rotation = grid.oxygen*90/100-45
@@ -78,3 +101,7 @@ func _input(event):
 func _on_Button_pressed():
 	move_panneau = true
 	
+
+
+func _on_Button_Gauche_pressed():
+	move_panneau_gauche = true

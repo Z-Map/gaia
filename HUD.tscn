@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://scripts/HUD.gd" type="Script" id=1]
 [ext_resource path="res://resources/texture/Panneau.png" type="Texture" id=2]
@@ -12,6 +12,9 @@
 [ext_resource path="res://resources/texture/Fleche.png" type="Texture" id=10]
 [ext_resource path="res://resources/texture/Pad.png" type="Texture" id=11]
 [ext_resource path="res://resources/texture/GaIA.png" type="Texture" id=12]
+[ext_resource path="res://resources/texture/Panneau_gauche.png" type="Texture" id=13]
+[ext_resource path="res://resources/texture/Fleche_gauche.png" type="Texture" id=14]
+[ext_resource path="res://resources/texture/Memo.png" type="Texture" id=15]
 
 [sub_resource type="DynamicFont" id=1]
 size = 80
@@ -72,7 +75,7 @@ position = Vector2( 30.0156, 359.776 )
 texture = ExtResource( 10 )
 
 [node name="Pad" type="Sprite" parent="Panneau"]
-position = Vector2( 115.378, 418.896 )
+position = Vector2( 114.67, 419.604 )
 texture = ExtResource( 11 )
 centered = false
 offset = Vector2( -8, -8 )
@@ -81,4 +84,27 @@ offset = Vector2( -8, -8 )
 position = Vector2( 112.003, 112.624 )
 scale = Vector2( 0.0940084, 0.0940084 )
 texture = ExtResource( 12 )
+
+[node name="Panneau_Gauche" type="Sprite" parent="."]
+position = Vector2( 56.6122, 182.432 )
+texture = ExtResource( 13 )
+centered = false
+offset = Vector2( -400, 0 )
+
+[node name="Fleche_Gauche" type="Sprite" parent="Panneau_Gauche"]
+visible = false
+position = Vector2( -28.9615, 167.753 )
+texture = ExtResource( 14 )
+
+[node name="Button_Gauche" type="Button" parent="Panneau_Gauche"]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = -56.8904
+margin_top = 96.2659
+margin_right = -2.89037
+margin_bottom = 244.266
+
+[node name="Memo" type="Sprite" parent="Panneau_Gauche"]
+position = Vector2( -233.762, 188.958 )
+texture = ExtResource( 15 )
 [connection signal="pressed" from="Panneau/Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="Panneau_Gauche/Button_Gauche" to="." method="_on_Button_Gauche_pressed"]
