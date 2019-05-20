@@ -40,11 +40,19 @@ func set_light(v = false):
 			$death.start(adv * time)
 	light = v
 
-#func next_level():
-	
+func next_level():
+	if lvl == 0:
+		current_level = $lvl1
+	else:
+		if lvl == 1:
+			current_level = $lvl2
 
-#func prev_level():
-	
+func prev_level():
+	if lvl == 2:
+		current_level = $lvl1
+	else:
+		if lvl == 1:
+			current_level = $lvl0
 
 func refresh_shape():
 	pass
@@ -72,11 +80,13 @@ func _process(delta):
 
 
 func _on_growth_timeout():
-	if lvl == 0:
-		grid.plant_ready(pos_x, pos_y)
+	grid.plant_ready(pos_x, pos_y)
+	next_level()
 	
 
 
 func _on_death_timeout():
 	if lvl == 0:
 		grid.plant_die(pos_x, pos_y)
+	else:
+		prev_level()
