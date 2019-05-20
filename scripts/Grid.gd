@@ -102,9 +102,13 @@ func start_gardening():
 	for i in range(3,6):
 		for j in range(0,3):
 			add_plant(i,j)
+	for i in range(0,3):
+		for j in range(18,21):
+			add_champi(i,j)
 	for i in range(21,24):
 		for j in range(3,6):
 			add_champi(i,j)
+	HUD.play_sound = true
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	init_music()
@@ -115,6 +119,5 @@ func _ready():
 	start_gardening()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	power+=0.5
+#func _process(delta):
 #	pass

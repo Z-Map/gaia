@@ -28,7 +28,8 @@ func update_sprite():
 func set_state(v):
 	if v != lumiere:
 		lumiere = not lumiere
-		boops[rand_range(0,4)].play()
+		if HUD.play_sound:
+			boops[rand_range(0,4)].play()
 		update_sprite()
 
 

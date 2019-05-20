@@ -11,6 +11,8 @@ var light_toggle_mode = null
 var tiles = []
 var focus_tile = null
 
+var play_sound = false
+
 func call_func_grid(x=0,y=0,etat=false):
 	grid.update_light_grid(x,y,etat)
 
@@ -59,6 +61,8 @@ func _process(delta):
 				move_panneau = false
 				
 	get_node("Panneau/Barre").value = grid.power
+	get_node("Panneau/Ecran/power_input").text = str(grid.power_input)
+	get_node("Panneau/Gauge/Aiguille").rotation = grid.oxygen*90/100-45
 
 func _input(event):
 	if event is InputEventMouseButton and event.button_index == 1:

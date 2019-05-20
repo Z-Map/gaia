@@ -1,16 +1,21 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://scripts/HUD.gd" type="Script" id=1]
 [ext_resource path="res://resources/texture/Panneau.png" type="Texture" id=2]
 [ext_resource path="res://resources/texture/Gauge.png" type="Texture" id=3]
 [ext_resource path="res://resources/texture/Gauge_aiguille.png" type="Texture" id=4]
 [ext_resource path="res://resources/texture/Ecran.png" type="Texture" id=5]
-[ext_resource path="res://resources/texture/Barre_fond.png" type="Texture" id=6]
-[ext_resource path="res://resources/texture/Barre.png" type="Texture" id=7]
-[ext_resource path="res://resources/texture/Barre_progress.png" type="Texture" id=8]
-[ext_resource path="res://resources/texture/Fleche.png" type="Texture" id=9]
-[ext_resource path="res://resources/texture/Pad.png" type="Texture" id=10]
-[ext_resource path="res://resources/texture/GaIA.png" type="Texture" id=11]
+[ext_resource path="res://resources/VT323-Regular.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://resources/texture/Barre_fond.png" type="Texture" id=7]
+[ext_resource path="res://resources/texture/Barre.png" type="Texture" id=8]
+[ext_resource path="res://resources/texture/Barre_progress.png" type="Texture" id=9]
+[ext_resource path="res://resources/texture/Fleche.png" type="Texture" id=10]
+[ext_resource path="res://resources/texture/Pad.png" type="Texture" id=11]
+[ext_resource path="res://resources/texture/GaIA.png" type="Texture" id=12]
+
+[sub_resource type="DynamicFont" id=1]
+size = 80
+font_data = ExtResource( 6 )
 
 [node name="HUD" type="Node2D"]
 script = ExtResource( 1 )
@@ -25,12 +30,23 @@ position = Vector2( 179.279, 137.732 )
 texture = ExtResource( 3 )
 
 [node name="Aiguille" type="Sprite" parent="Panneau/Gauge"]
-position = Vector2( 0, -10.3176 )
+position = Vector2( 3.85217, 19.1446 )
 texture = ExtResource( 4 )
+offset = Vector2( -4, -29 )
 
 [node name="Ecran" type="Sprite" parent="Panneau"]
 position = Vector2( 180.925, 255.096 )
 texture = ExtResource( 5 )
+
+[node name="power_input" type="Label" parent="Panneau/Ecran"]
+margin_left = -50.9359
+margin_top = -11.3413
+margin_right = 53.0641
+margin_bottom = 68.6587
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.607843, 0, 0, 1 )
+text = "100"
+align = 2
 
 [node name="Barre" type="TextureProgress" parent="Panneau"]
 margin_left = 276.946
@@ -38,9 +54,9 @@ margin_top = 39.3415
 margin_right = 376.946
 margin_bottom = 323.342
 value = 50.0
-texture_under = ExtResource( 6 )
-texture_over = ExtResource( 7 )
-texture_progress = ExtResource( 8 )
+texture_under = ExtResource( 7 )
+texture_over = ExtResource( 8 )
+texture_progress = ExtResource( 9 )
 fill_mode = 3
 
 [node name="Button" type="Button" parent="Panneau"]
@@ -53,16 +69,16 @@ margin_bottom = 434.53
 [node name="Fleche" type="Sprite" parent="Panneau"]
 visible = false
 position = Vector2( 30.0156, 359.776 )
-texture = ExtResource( 9 )
+texture = ExtResource( 10 )
 
 [node name="Pad" type="Sprite" parent="Panneau"]
 position = Vector2( 115.378, 418.896 )
-texture = ExtResource( 10 )
+texture = ExtResource( 11 )
 centered = false
 offset = Vector2( -8, -8 )
 
 [node name="Sprite" type="Sprite" parent="Panneau/Pad"]
 position = Vector2( 112.003, 112.624 )
 scale = Vector2( 0.0940084, 0.0940084 )
-texture = ExtResource( 11 )
+texture = ExtResource( 12 )
 [connection signal="pressed" from="Panneau/Button" to="." method="_on_Button_pressed"]
