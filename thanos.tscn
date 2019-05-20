@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://scripts/CamPoint.gd" type="Script" id=1]
 [ext_resource path="res://resources/space.tres" type="Environment" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://resources/mesh/spacebase_garden.obj" type="ArrayMesh" id=9]
 [ext_resource path="res://resources/mesh/dirt.material" type="Material" id=10]
 [ext_resource path="res://resources/mesh/panel.material" type="Material" id=11]
+[ext_resource path="res://element/Gaia.tscn" type="PackedScene" id=12]
 
 [node name="Root" type="Spatial"]
 
@@ -46,7 +47,7 @@ transform = Transform( 0.1, 0, 0, 0, -4.37114e-09, 0.1, 0, -0.1, -4.37114e-09, 0
 layers = 2
 light_energy = 5.0
 light_cull_mask = 4293918722
-spot_range = 50.0
+spot_range = 55.0
 spot_attenuation = 0.233258
 spot_angle = 60.0
 spot_angle_attenuation = 3.03143
@@ -96,3 +97,7 @@ transform = Transform( 0.0582843, 0.0125297, -0.0802867, 0.0115518, 0.0965229, 0
 layers = 524288
 light_energy = 0.2
 light_cull_mask = 4294443008
+
+[node name="Gaia" parent="spacebase" instance=ExtResource( 12 )]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0 )
+[connection signal="timeout" from="Grid/Tour" to="Grid" method="_on_Tour_timeout"]

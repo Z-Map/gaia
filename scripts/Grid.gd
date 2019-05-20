@@ -30,6 +30,10 @@ var HUD
 func update_light_grid(x = 0, y = 0, etat = false):
 	if light_inited:
 		light_grid[x][y].light_on = etat
+		for i in range(0,3):
+			for j in range(0,3):
+				if cells_grid[x * 3 + i][y * 3 + j]:
+					cells_grid[x * 3 + i][y * 3 + j].light = etat
 
 func init_grids(lg_size = 9, cg_size = 3):
 	light_grid = []
@@ -51,7 +55,7 @@ func init_blocs():
 			light_grid[i][j] = light_bloc.instance()
 			light_grid[i][j].grid = self
 			light_grid[i][j].set_pos(i, j)
-			light_grid[i][j].translation = Vector3(-24 + float(j * 6), 0, -24 + float(i * 6))
+			light_grid[i][j].translation = Vector3(-24 + (j * 6), 0, -24 + (i * 6))
 			add_child(light_grid[i][j])
 	light_inited = true
 
@@ -67,6 +71,7 @@ func init_music():
 func add_plant(x, y):
 	if not cells_grid[x][y]:
 		cells_grid[x][y] = Plant_tile.instance()
+		cells_grid[x][y].grid = self
 		cells_grid[x][y].set_pos(x, y)
 		cells_grid[x][y].light = light_grid[x / 3][y / 3].light_on
 		add_child(cells_grid[x][y])
@@ -78,6 +83,7 @@ func add_champi(x, y):
 	if not cells_grid[x][y]:
 		cells_grid[x][y] = Champi_tile.instance()
 		cells_grid[x][y].set_pos(x, y)
+		cells_grid[x][y].grid = self
 		cells_grid[x][y].light = light_grid[x / 3][y / 3].light_on
 		add_child(cells_grid[x][y])
 		return true
@@ -121,3 +127,20 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+func plant_ready(x, y):
+	for i in [-1,0,1]:
+		for j in [-1,0,1]:
+			if i or j:
+				var k = x + i
+				var l = y + j
+				if k >= 0 and k < 27 and l >= 0 and l < 27:
+					if not cells_grid[k][l] and light_grid[k / 3][l / 3].light_on:
+						add_plant(k, l)
+
+func plant_die(x, y):
+	cells_grid[x][y].queue_free()
+	cells_grid[x][y] = null
+
+func _on_Tour_timeout():
+	pass # Replace with function body.
