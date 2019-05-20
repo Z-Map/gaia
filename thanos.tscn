@@ -39,6 +39,7 @@ stream = ExtResource( 4 )
 
 [node name="Tour" type="Timer" parent="Grid"]
 wait_time = 10.0
+autostart = true
 
 [node name="spacebase" type="Spatial" parent="."]
 transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0 )

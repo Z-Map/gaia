@@ -120,3 +120,8 @@ func _on_death_timeout():
 		grid.plant_die(pos_x, pos_y)
 	else:
 		prev_level()
+
+
+func _on_lolilol_timeout():
+	if lvl > 0:
+		grid.plant_ready(pos_x, pos_y)
