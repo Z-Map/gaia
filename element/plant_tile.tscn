@@ -8,19 +8,28 @@
 script = ExtResource( 2 )
 growth_lvl1 = 10
 death_lvl1 = 5
+growth_lvl2 = 10
+death_lvl2 = 5
+growth_lvl3 = 10
+death_lvl3 = 5
 
-[node name="lvl1" parent="." index="0"]
-script = ExtResource( 3 )
-
-[node name="lvl2" parent="." index="1"]
-script = ExtResource( 3 )
-
-[node name="growth" type="Timer" parent="." index="2"]
+[node name="growth" type="Timer" parent="." index="0"]
 wait_time = 60.0
 one_shot = true
 
-[node name="death" type="Timer" parent="." index="3"]
+[node name="death" type="Timer" parent="." index="1"]
 wait_time = 24.0
 one_shot = true
+
+[node name="lvl1" parent="." index="2"]
+editor/display_folded = true
+script = ExtResource( 3 )
+
+[node name="lvl2" parent="." index="3"]
+script = ExtResource( 3 )
+growth_type = 1
+
+[node name="lvl3" parent="." index="4"]
+script = ExtResource( 3 )
 [connection signal="timeout" from="growth" to="." method="_on_growth_timeout"]
 [connection signal="timeout" from="death" to="." method="_on_death_timeout"]
