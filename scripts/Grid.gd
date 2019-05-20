@@ -69,6 +69,8 @@ func init_music():
 	$Music.play()
 
 func add_plant(x, y):
+	if x == 13 and y == 13:
+		return false
 	if not cells_grid[x][y]:
 		cells_grid[x][y] = Plant_tile.instance()
 		cells_grid[x][y].grid = self
@@ -157,4 +159,44 @@ func champi_die(x, y):
 	cells_grid[x][y] = null
 
 func _on_Tour_timeout():
-	pass # Replace with function body.
+	var i = 0
+	var j = 0
+	for tab in cells_grid:
+		for stab in tab:
+			if not cells_grid[i][j]:
+				if light_grid[i / 3][j / 3].light_on:
+					if cells_grid[i - 1][j - 1] and cells_grid[i - 1][j - 1].type == 0 and cells_grid[i - 1][j - 1].lvl  > 0:
+						add_plant(i, j)
+					elif cells_grid[i - 1][j] and cells_grid[i - 1][j].type == 0 and cells_grid[i - 1][j].lvl  > 0:
+						add_plant(i, j)
+					elif cells_grid[i - 1][j + 1] and cells_grid[i - 1][j + 1].type == 0 and cells_grid[i - 1][j + 1].lvl  > 0:
+						add_plant(i, j)
+					elif cells_grid[i][j - 1] and cells_grid[i][j - 1].type == 0 and cells_grid[i][j - 1].lvl  > 0:
+						add_plant(i, j)
+					elif cells_grid[i][j + 1] and cells_grid[i][j + 1].type == 0 and cells_grid[i][j + 1].lvl  > 0:
+						add_plant(i, j)
+					elif cells_grid[i + 1][j - 1] and cells_grid[i + 1][j - 1].type == 0 and cells_grid[i + 1][j - 1].lvl  > 0:
+						add_plant(i, j)
+					elif cells_grid[i + 1][j] and cells_grid[i + 1][j].type == 0 and cells_grid[i + 1][j].lvl  > 0:
+						add_plant(i, j)
+					elif cells_grid[i + 1][j + 1] and cells_grid[i + 1][j + 1].type == 0 and cells_grid[i + 1][j + 1].lvl  > 0:
+						add_plant(i, j)
+				else:
+					if cells_grid[i - 1][j - 1] and cells_grid[i - 1][j - 1].type == 1 and cells_grid[i - 1][j - 1].lvl  > 0:
+						add_champi(i, j)
+					elif cells_grid[i - 1][j] and cells_grid[i - 1][j].type == 1 and cells_grid[i - 1][j].lvl  > 0:
+						add_champi(i, j)
+					elif cells_grid[i - 1][j + 1] and cells_grid[i - 1][j + 1].type == 1 and cells_grid[i - 1][j + 1].lvl  > 0:
+						add_champi(i, j)
+					elif cells_grid[i][j - 1] and cells_grid[i][j - 1].type == 1 and cells_grid[i][j - 1].lvl  > 0:
+						add_champi(i, j)
+					elif cells_grid[i][j + 1] and cells_grid[i][j + 1].type == 1 and cells_grid[i][j + 1].lvl  > 0:
+						add_champi(i, j)
+					elif cells_grid[i + 1][j - 1] and cells_grid[i + 1][j - 1].type == 1 and cells_grid[i + 1][j - 1].lvl  > 0:
+						add_champi(i, j)
+					elif cells_grid[i + 1][j] and cells_grid[i + 1][j].type == 1 and cells_grid[i + 1][j].lvl  > 0:
+						add_champi(i, j)
+					elif cells_grid[i + 1][j + 1] and cells_grid[i + 1][j + 1].type == 1 and cells_grid[i + 1][j + 1].lvl  > 0:
+						add_champi(i, j)
+			j += 1
+		i += 1

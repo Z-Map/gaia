@@ -1,15 +1,17 @@
 extends Spatial
 
-export(int) var growth_lvl1:int = 30
+export(int) var growth_lvl1:int = 20
 export(int) var death_lvl1:int = 15
 
-export(int) var growth_lvl2:int = 60
-export(int) var death_lvl2:int = 12
+export(int) var growth_lvl2:int = 30
+export(int) var death_lvl2:int = 6
 
-export(int) var growth_lvl3:int = 20
-export(int) var death_lvl3:int = 15
+export(int) var growth_lvl3:int = 22
+export(int) var death_lvl3:int = 10
 
 var grid = null
+
+var type = 0
 
 var lvl = 0
 var pos_x = 0
