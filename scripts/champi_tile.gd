@@ -39,7 +39,21 @@ func set_light(v = false):
 			current_time = time
 			$death.start(adv * time)
 	light = v
+	
+func next_level():
+	if lvl == 0:
+		current_level = $lvl1
+	else:
+		if lvl == 1:
+			current_level = $lvl2
 
+func prev_level():
+	if lvl == 2:
+		current_level = $lvl1
+	else:
+		if lvl == 1:
+			current_level = $lvl0
+			
 func set_pos(x, y):
 	pos_x = x
 	pos_y = y
@@ -64,3 +78,13 @@ func _process(delta):
 	else:
 		current_level.growth =  $death.time_left / current_time
 	
+func _on_growth_timeout():
+	grid.champi_ready(pos_x, pos_y)
+	next_level()
+	
+
+func _on_death_timeout():
+	if lvl == 0:
+		grid.champi_die(pos_x, pos_y)
+	else:
+		prev_level()

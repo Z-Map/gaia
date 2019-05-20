@@ -109,11 +109,9 @@ func _process(delta):
 	else:
 		current_level.growth =  $death.time_left / current_time
 
-
 func _on_growth_timeout():
 	grid.plant_ready(pos_x, pos_y)
 	next_level()
-
 
 func _on_death_timeout():
 	if lvl == 0:

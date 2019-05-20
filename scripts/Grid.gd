@@ -138,7 +138,21 @@ func plant_ready(x, y):
 					if not cells_grid[k][l] and light_grid[k / 3][l / 3].light_on:
 						add_plant(k, l)
 
+func champi_ready(x,y):
+	for i in [-1,0,1]:
+		for j in [-1,0,1]:
+			if i or j:
+				var k = x + i
+				var l = y + j
+				if k >= 0 and k < 27 and l >= 0 and l < 27:
+					if not cells_grid[k][l] and not light_grid[k / 3][l / 3].light_on:
+						add_champi(k, l)
+
 func plant_die(x, y):
+	cells_grid[x][y].queue_free()
+	cells_grid[x][y] = null
+	
+func champi_die(x, y):
 	cells_grid[x][y].queue_free()
 	cells_grid[x][y] = null
 
