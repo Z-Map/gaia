@@ -19,4 +19,9 @@ func _input(event):
 	if event is InputEventMouseButton and event.button_index == 2:
 		moving = event.pressed
 	if event is InputEventMouseMotion and moving:
-		translate(Vector3(event.relative.x * 0.05, 0, event.relative.y * 0.05))
+		var move = Vector3(event.relative.x * -0.05, 0, event.relative.y * -0.05)
+		if (move.x > 0.0 and translation.x > 20.0) or (move.x < 0.0 and translation.x < -20.0):
+			move.x = 0.0
+		if (move.z > 0.0 and translation.z > 2.0) or (move.z < 0.0 and translation.z < -30.0):
+			move.z = 0.0
+		translate(move)

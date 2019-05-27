@@ -37,9 +37,10 @@ func _ready():
 			$Panneau/Pad.add_child(light_tile)
 
 func set_light(x, y, state = false):
-	light_toggle_mode = not state
-	call_func_grid(x,y, state)
-	tiles[x][y].lumiere = state
+	if tiles[x][y].lumiere != state:
+		light_toggle_mode = not state
+		call_func_grid(x,y, state)
+		tiles[x][y].lumiere = state
 
 func reset_button_press():
 	light_toggle_mode = null
@@ -82,10 +83,9 @@ func _process(delta):
 				$Panneau_Gauche/Fleche_Gauche.hide()
 				open_panneau_gauche = true
 				move_panneau_gauche = false
-				
-	get_node("Panneau/Barre").value = 65
-	get_node("Panneau/Ecran/power_input").text = "10.5%"
-	#get_node("Panneau/Gauge/Aiguille").rotation = 30
+	get_node("Panneau/Barre").value = (grid.power / grid.max_power) * 100
+	get_node("Panneau/Ecran/power_input").text = str(((grid.power_input - (grid.water_output + grid.light_output)) / grid.max_power) * 100.0)
+	get_node("Panneau/Gauge/Aiguille").rotation = ((grid.oxygen / grid.max_oxygen) * 0.5 - 0.25) * PI
 
 func _input(event):
 	if event is InputEventMouseButton and event.button_index == 1:

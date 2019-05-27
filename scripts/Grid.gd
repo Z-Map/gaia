@@ -1,5 +1,7 @@
 extends Spatial
 
+export(float) var round_scale: float = 0.1
+
 # Tableau d'objets pour la grille
 var cells_grid = null
 var light_inited = false
@@ -7,20 +9,25 @@ var light_grid = null
 
 # Cell type count
 var plant_count = 0
+var plant_lvl = 0
 var shroom_count = 0
+var shroom_lvl = 0
 
 # Niveau d'énergie stocké
-var power: int = 0
+export(int) var power: float = 130
 # Énergie généré par tour
-var power_input: int = 0
+var power_input: float = 0
 # Énergie maximale stockable
-var max_power: int = 0
+export(int) var max_power: float = 1000
 
 # Niveau d'oxygen
-var oxygen: int = 0
+export(int) var oxygen_input: float = 0
+export(int) var oxygen: float = 30
+export(int) var max_oxygen: float = 100
 
 # Consomation d'énergie pour l'eau par tour
-var water_output: int = 0
+var water_output: float = 0
+var light_output: float = 0
 
 var Plant_tile = preload("res://element/plant_tile.tscn")
 var Champi_tile = preload("res://element/champi_tile.tscn")
@@ -29,6 +36,7 @@ var HUD
 
 func update_light_grid(x = 0, y = 0, etat = false):
 	if light_inited:
+		light_output += 1 if etat else -1
 		light_grid[x][y].light_on = etat
 		for i in range(0,3):
 			for j in range(0,3):
@@ -96,20 +104,20 @@ func start_gardening():
 	for i in range(3,6):
 		for j in range(3,6):
 			HUD.set_light(i, j, true)
-	for i in range(0,2):
+	"""for i in range(0,2):
 		for j in range(0,2):
-			HUD.set_light(i, j, true)
-	HUD.set_light(2, 1, true)
-	for i in range(7,9):
+			HUD.set_light(i, j, true)"""
+	#HUD.set_light(2, 1, true)
+	"""for i in range(7,9):
 		for j in range(6,9):
-			HUD.set_light(i, j, true)
+			HUD.set_light(i, j, true)"""
 	for i in range(12,15):
 		for j in range(12,15):
 			if i != 13 or j != 13:
 				add_plant(i,j)
-	for i in range(3,6):
+	"""for i in range(3,6):
 		for j in range(0,3):
-			add_plant(i,j)
+			add_plant(i,j)"""
 	for i in range(0,3):
 		for j in range(18,21):
 			add_champi(i,j)
@@ -125,6 +133,7 @@ func _ready():
 	init_HUD()
 	
 	start_gardening()
+	print("Actual : " + str(power) + " - output : " + str(water_output + light_output) + " - input : " + str(power_input))
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
@@ -147,8 +156,14 @@ func champi_ready(x,y):
 				var k = x + i
 				var l = y + j
 				if k >= 0 and k < 27 and l >= 0 and l < 27:
-					if not cells_grid[k][l] and not light_grid[k / 3][l / 3].light_on:
+					if not cells_grid[k][l] and not light_grid[k / 3][l / 3].light_on and oxygen_input > 0.0:
 						add_champi(k, l)
+
+func plant_grown(x, y):
+	pass
+
+func champi_grown(x, y):
+	pass
 
 func plant_die(x, y):
 	cells_grid[x][y].queue_free()
@@ -158,5 +173,39 @@ func champi_die(x, y):
 	cells_grid[x][y].queue_free()
 	cells_grid[x][y] = null
 
+func update_values():
+	plant_count = 0
+	plant_lvl = 0
+	shroom_count = 0
+	shroom_lvl = 0
+	oxygen_input = 0
+	for x in range(len(cells_grid)):
+		for y in range(len(cells_grid[x])):
+			if cells_grid[x][y]:
+				var entity = cells_grid[x][y]
+				if entity.type:
+					shroom_count += 1
+					shroom_lvl += entity.lvl
+				else:
+					plant_count += 1
+					plant_lvl += entity.lvl
+					if entity.light:
+						oxygen_input += float(entity.lvl) / 2.0
+
 func _on_Tour_timeout():
-	print("TANT PIS")
+	update_values()
+	power_input = shroom_count
+	water_output = plant_lvl
+	var npower = power + ((power_input - water_output - light_output) * round_scale)
+	if npower < 0:
+		npower = 0
+	elif npower > max_power:
+		npower = max_power
+	if npower != power:
+		power = npower
+		print("Actual : " + str(power) + " - output : " + str(water_output + light_output) + " - input : " + str(power_input))
+	oxygen += (oxygen_input - (shroom_lvl / 3.0)) * round_scale
+	if oxygen > max_oxygen:
+		oxygen = max_oxygen
+	elif oxygen < 0:
+		oxygen = 0.0

@@ -14,6 +14,7 @@ var grid = null
 var type = 0
 
 var lvl = 0
+var max_lvl = 0
 var pos_x = 0
 var pos_y = 0
 var light = false setget set_light
@@ -59,6 +60,8 @@ func next_level():
 	if lvl == 0:
 		current_level = $lvl2
 		current_time = growth_lvl2
+		if not max_lvl:
+			grid.plant_grown(pos_x,pos_y)
 	elif lvl == 1:
 		current_level = $lvl3
 		current_time = growth_lvl3
@@ -67,6 +70,8 @@ func next_level():
 	offset = 0
 	$growth.start(current_time)
 	lvl += 1
+	if lvl > max_lvl:
+		max_lvl = lvl
 
 func prev_level():
 	$death.stop()
@@ -112,7 +117,6 @@ func _process(delta):
 		current_level.growth =  $death.time_left / current_time
 
 func _on_growth_timeout():
-	grid.plant_ready(pos_x, pos_y)
 	next_level()
 
 func _on_death_timeout():
@@ -123,5 +127,5 @@ func _on_death_timeout():
 
 
 func _on_lolilol_timeout():
-	if lvl > 0:
+	if lvl > 0 and light:
 		grid.plant_ready(pos_x, pos_y)
