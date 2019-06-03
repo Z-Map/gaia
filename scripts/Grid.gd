@@ -132,6 +132,8 @@ func _ready():
 	init_blocs()
 	init_HUD()
 	
+	power_distribution()
+	
 	start_gardening()
 	print("Actual : " + str(power) + " - output : " + str(water_output + light_output) + " - input : " + str(power_input))
 
@@ -156,7 +158,7 @@ func champi_ready(x,y):
 				var k = x + i
 				var l = y + j
 				if k >= 0 and k < 27 and l >= 0 and l < 27:
-					if not cells_grid[k][l] and not light_grid[k / 3][l / 3].light_on and oxygen_input > 0.0:
+					if not cells_grid[k][l] and not light_grid[k / 3][l / 3].light_on and oxygen > 0.0:
 						add_champi(k, l)
 
 func plant_grown(x, y):
@@ -190,12 +192,26 @@ func update_values():
 					plant_count += 1
 					plant_lvl += entity.lvl
 					if entity.light:
-						oxygen_input += float(entity.lvl) / 2.0
+						oxygen_input += float(entity.lvl)
+
+func power_distribution():
+	var i:int = 2
+	var x:int = 12
+	var y:int = 12
+	var dir:Vector2 = Vector2(1, 0)
+	while i <= 26:
+		for j in range(3):
+			for k in range(i):
+				x += dir.x
+				y += dir.y
+			dir = dir.rotated(PI / 2).round()
+		i += 1
+
+func oxygen_distribution():
+	pass
 
 func _on_Tour_timeout():
 	update_values()
-	power_input = shroom_count
-	water_output = plant_lvl
 	var npower = power + ((power_input - water_output - light_output) * round_scale)
 	if npower < 0:
 		npower = 0
