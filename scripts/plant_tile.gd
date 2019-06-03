@@ -1,13 +1,13 @@
 extends Spatial
 
-export(int) var growth_lvl1:int = 20
-export(int) var death_lvl1:int = 15
+export(float) var growth_lvl1:float = 10
+export(float) var death_lvl1:float = 8
 
-export(int) var growth_lvl2:int = 30
-export(int) var death_lvl2:int = 6
+export(float) var growth_lvl2:float = 15
+export(float) var death_lvl2:float = 3
 
-export(int) var growth_lvl3:int = 22
-export(int) var death_lvl3:int = 10
+export(float) var growth_lvl3:float = 11
+export(float) var death_lvl3:float = 5
 
 var grid = null
 
@@ -102,6 +102,12 @@ func set_pos(x, y):
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	growth_lvl1 += rand_range(-3,3)
+	death_lvl1 += rand_range(-2,2)
+	growth_lvl2 += rand_range(-4,4)
+	death_lvl2 += rand_range(-1,1)
+	growth_lvl3 += rand_range(-3,3)
+	death_lvl3 += rand_range(-1,1)
 	rotate_y(PI * rand_range(0.0, 2.0))
 	$lvl1.growth = 0
 	$lvl2.growth = 0

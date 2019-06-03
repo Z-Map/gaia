@@ -44,7 +44,7 @@ autostart = true
 transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0 )
 
 [node name="SpotLight" type="SpotLight" parent="spacebase"]
-transform = Transform( 0.1, 0, 0, 0, -4.37114e-09, 0.1, 0, -0.1, -4.37114e-09, 0, 3.32991, 0 )
+transform = Transform( 0.1, 0, 0, 0, -4.37114e-009, 0.1, 0, -0.1, -4.37114e-009, 0, 3.32991, 0 )
 visible = false
 layers = 2
 light_energy = 5.0
@@ -55,7 +55,7 @@ spot_angle = 60.0
 spot_angle_attenuation = 3.03143
 
 [node name="DarkLight" type="SpotLight" parent="spacebase"]
-transform = Transform( 0.1, 0, 0, 0, -4.37114e-09, 0.1, 0, -0.1, -4.37114e-09, 0, 3.32991, 0 )
+transform = Transform( 0.1, 0, 0, 0, -4.37114e-009, 0.1, 0, -0.1, -4.37114e-009, 0, 3.32991, 0 )
 visible = false
 layers = 4
 light_color = Color( 0.854902, 0.839216, 1, 1 )
@@ -89,7 +89,7 @@ material/1 = ExtResource( 10 )
 material/2 = ExtResource( 11 )
 
 [node name="ambient" type="DirectionalLight" parent="spacebase"]
-transform = Transform( 0.1, 0, 0, 0, -4.37114e-09, -0.1, 0, 0.1, -4.37114e-09, 0, 3.26539, 0 )
+transform = Transform( 0.1, 0, 0, 0, -4.37114e-009, -0.1, 0, 0.1, -4.37114e-009, 0, 3.26539, 0 )
 layers = 3
 light_color = Color( 0.427451, 0.423529, 1, 1 )
 light_energy = 0.1
