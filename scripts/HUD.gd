@@ -18,6 +18,8 @@ var focus_tile = null
 
 var play_sound = false
 
+var debug_line: String = ""
+
 func call_func_grid(x=0,y=0,etat=false):
 	grid.update_light_grid(x,y,etat)
 
@@ -84,8 +86,9 @@ func _process(delta):
 				open_panneau_gauche = true
 				move_panneau_gauche = false
 	get_node("Panneau/Barre").value = (grid.power / grid.max_power) * 100
-	get_node("Panneau/Ecran/power_input").text = str(((grid.power_input - (grid.water_output + grid.light_output)) / grid.max_power) * 100.0)
+	get_node("Panneau/Ecran/power_input").text = str(-grid.power_loss)
 	get_node("Panneau/Gauge/Aiguille").rotation = ((grid.oxygen / grid.max_oxygen) * 0.5 - 0.25) * PI
+	$DebugTxt.text = debug_line
 
 func _input(event):
 	if event is InputEventMouseButton and event.button_index == 1:

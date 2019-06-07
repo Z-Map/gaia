@@ -1,23 +1,27 @@
 extends Spatial
 
-export(float) var growth_lvl1:float = 5
-export(float) var death_lvl1:float = 3
-
-export(float) var growth_lvl2:float = 10
-export(float) var death_lvl2:float = 5
-
-export(float) var growth_lvl3:float = 13
-export(float) var death_lvl3:float = 3
-
 var grid = null
-
-var type = 1
-
-var lvl = 0
-var max_lvl = 0
 var pos_x = 0
 var pos_y = 0
+
+# Type : champi = 1 / plant = 0
+var type = 1
+
 var light = false setget set_light
+
+# Growth / Death mechanism
+var lvl = 0
+var max_lvl = 0
+
+export(float) var growth_lvl1:float = 6
+export(float) var death_lvl1:float = 3
+
+export(float) var growth_lvl2:float = 12
+export(float) var death_lvl2:float = 6
+
+export(float) var growth_lvl3:float = 22
+export(float) var death_lvl3:float = 11
+
 var offset = 0
 var current_time = 0
 
@@ -48,6 +52,7 @@ func set_light(v = false):
 			elif lvl == 1:
 				time = death_lvl2
 			else:
+				lvl = 2
 				time = death_lvl3
 			offset = 0
 			current_time = time
@@ -57,39 +62,37 @@ func set_light(v = false):
 func next_level():
 	$death.stop()
 	$growth.stop()
-	if lvl == 0:
+	lvl += 1
+	if lvl > max_lvl:
+		max_lvl = lvl
+	if lvl == 1:
 		current_level = $lvl2
 		current_time = growth_lvl2
 		if not max_lvl:
 			grid.champi_grown(pos_x,pos_y)
-	elif lvl == 1:
+	elif lvl == 2:
 		current_level = $lvl3
 		current_time = growth_lvl3
 	else:
 		return
 	offset = 0
 	$growth.start(current_time)
-	lvl += 1
-	if lvl > max_lvl:
-		max_lvl = lvl
 
 func prev_level():
 	$death.stop()
 	$growth.stop()
-	if lvl >= 3:
-		current_level = $lvl3
-		current_time = death_lvl3
-	if lvl == 2:
+	if lvl >= 2:
+		lvl = 1
 		current_level = $lvl2
 		current_time = death_lvl2
 	elif lvl == 1:
+		lvl = 0
 		current_level = $lvl1
 		current_time = death_lvl1
 	else:
 		return
 	offset = 0
 	$death.start(current_time)
-	lvl -= 1
 
 func set_pos(x, y):
 	pos_x = x
@@ -101,6 +104,7 @@ func refresh_shape():
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	# Randomisation des valeurs
 	growth_lvl1 += rand_range(-2,2)
 	death_lvl1 += rand_range(-1,1)
 	growth_lvl2 += rand_range(-3,3)
@@ -108,8 +112,13 @@ func _ready():
 	growth_lvl3 += rand_range(-3,3)
 	death_lvl3 += rand_range(-1,1)
 	rotate_y(PI * rand_range(0.0, 2.0))
+	var rands = rand_range(0.7, 1.5)
+	scale_object_local(Vector3(rands, rands, rands))
+	
+	# Setup growth
 	$lvl1.growth = 0
 	$lvl2.growth = 0
+	$lvl3.growth = 0
 	current_level = $lvl1
 	current_time = growth_lvl1
 	offset = 0

@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scripts/grid_hud.gd" type="Script" id=1]
+[ext_resource path="res://resources/texture/dbg.png" type="Texture" id=2]
+
+[node name="grid_hud" type="Spatial"]
+script = ExtResource( 1 )
+
+[node name="DebugImg" type="Sprite3D" parent="."]
+transform = Transform( 1.5, 0, 0, 0, -6.55671e-08, 1, 0, -1.5, -4.37114e-08, 0, 1.9409, 0 )
+texture = ExtResource( 2 )

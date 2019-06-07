@@ -8,6 +8,7 @@ var grid = null
 var light_on: bool = false setget change_light 
 var x: int = 0
 var y: int = 0
+var dbg_col: Color = Color(1.0,1.0,1.0, 0.0) setget set_dbg_col
 # Called when the node enters the scene tree for the first time.
 
 func set_pos(px, py):
@@ -21,6 +22,15 @@ func set_pos(px, py):
 		$Panel2.visible = false
 	x = px
 	y = py
+	
+func set_dbg_col(v:Color):
+	$DebugImg.modulate = v
+	$DebugImg.opacity = v.a
+	if v.a <= 0.01:
+		$DebugImg.visible = false
+	else:
+		$DebugImg.visible = true
+	dbg_col = v
 
 func change_light(v = false):
 	var layer = 2 if v else 4
@@ -36,6 +46,7 @@ func change_light(v = false):
 
 func _ready():
 	change_light(false)
+	set_dbg_col(dbg_col)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
